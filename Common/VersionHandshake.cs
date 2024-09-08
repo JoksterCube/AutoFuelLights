@@ -1,12 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Reflection;
-using System.Security.Cryptography;
-using System.Text;
 using HarmonyLib;
 
-namespace AutoFuelLights
+namespace JoksterCube.AutoFuelLights.Common
 {
     [HarmonyPatch(typeof(ZNet), nameof(ZNet.OnNewConnection))]
     public static class RegisterAndCheckVersion
@@ -38,10 +34,8 @@ namespace AutoFuelLights
             return false; // Prevent calling underlying method
         }
 
-        private static void Postfix(ZNet __instance)
-        {
+        private static void Postfix(ZNet __instance) => 
             ZRoutedRpc.instance.InvokeRoutedRPC(ZRoutedRpc.instance.GetServerPeerID(), $"{Plugin.ModName}RequestAdminSync", new ZPackage());
-        }
     }
 
     [HarmonyPatch(typeof(FejdStartup), nameof(FejdStartup.ShowConnectError))]
@@ -76,7 +70,7 @@ namespace AutoFuelLights
 
         public static void RPC_ServerSyncModTemplate_Version(ZRpc rpc, ZPackage pkg)
         {
-            string? version = pkg.ReadString();
+            string version = pkg.ReadString();
             Plugin.AutoFuelLightsLogger.LogInfo($"Version check, local: {Plugin.ModVersion},  remote: {version}");
             if (version != Plugin.ModVersion)
             {

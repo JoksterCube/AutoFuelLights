@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 using System.Runtime.InteropServices;
-using AutoFuelLights;
+using JoksterCube.AutoFuelLights;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
@@ -20,7 +20,7 @@ using AutoFuelLights;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("4358610B-F3F4-4843-B7AF-98B7BC60DCDE")]
+[assembly: Guid("9a14009f-f5ce-4092-8c5b-c84e6043a5b1")]
 
 // Version information for an assembly consists of the following four values:
 //
