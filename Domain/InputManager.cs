@@ -18,7 +18,11 @@ namespace JoksterCube.AutoFuelLights.Domain
 
             if (PluginConfig.FuelShortcut.Value.IsKeyDown())
             {
-                PluginManager.UpdateFireplaceFuellingList();
+                PluginConfig.FuelFromInventory.Value = PluginConfig.FuelFromInventory.Value.Not();
+
+                plugin.Config.Save();
+
+                PlayerExtensions.FormatedCenterMessage(Constants.InvenotoryFuelToggleMessage, PluginConfig.FuelFromInventory.Value.ToString());
             }
         }
     }

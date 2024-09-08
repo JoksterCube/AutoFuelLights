@@ -11,6 +11,7 @@ namespace JoksterCube.AutoFuelLights.Settings
         private static ConfigEntry<Toggle> _serverConfigLocked = null!;
 
         public static ConfigEntry<Toggle> IsOn = null!;
+        public static ConfigEntry<Toggle> FuelFromInventory = null!;
 
         public static ConfigEntry<KeyboardShortcut> ToggleShortcut;
         public static ConfigEntry<KeyboardShortcut> FuelShortcut;
@@ -37,6 +38,7 @@ namespace JoksterCube.AutoFuelLights.Settings
             _ = configSync.AddLockingConfigEntry(_serverConfigLocked);
 
             IsOn = ConfigOptions.Config("1 - General", "Is On", Toggle.On, "Plugin is currently on or off.");
+            FuelFromInventory = ConfigOptions.Config("1 - General", "Fuel From Inventory", Toggle.Off, "Use fuel from inventory or not.");
 
             ToggleShortcut = ConfigOptions.Config("2 - Settings", "Toggle Keyboard Shortcut", new KeyboardShortcut(KeyCode.L, KeyCode.RightControl), "Keyboard shortcut to toggle behaviour.");
             FuelShortcut = ConfigOptions.Config("2 - Settings", "Fuel Keyboard Shortcut", new KeyboardShortcut(KeyCode.L), "Keyboard shortcut to toggle fuel from inventory.");
