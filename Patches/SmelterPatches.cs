@@ -5,24 +5,21 @@ using UnityEngine;
 
 namespace JoksterCube.AutoFuelLights.Patches
 {
-    internal class FireplacePatch
+    internal class SmelterPatches
     {
-        [HarmonyPatch(typeof(Fireplace), "UpdateFireplace")]
-        private static class Fireplace_UpdateFireplace_Patch
+        [HarmonyPatch(typeof(Smelter), nameof(Smelter.UpdateSmelter))]
+        private static class Smelter_FixedUpdate_Patch
         {
-            private static void Postfix(Fireplace __instance, ZNetView ___m_nview)
+            private static void Postfix(Smelter __instance, ZNetView ___m_nview)
             {
                 if (!PluginConfig.IsOn.IsOn() || !Player.m_localPlayer || !___m_nview.IsOwner()) return;
+
+                if (!PluginConfig.IsAllowedSmelterType(__instance)) return;
 
                 var distance = Vector3.Distance(Player.m_localPlayer.transform.position, __instance.transform.position);
                 if (distance > PluginConfig.FireplaceRange.Value) return;
 
                 if (!PluginConfig.IsAllowedFuel(__instance.m_fuelItem)) return;
-
-                var currentFuel = ___m_nview.GetZDO().GetFloat("fuel");
-
-                Plugin.AutoFuelLightsLogger.LogInfo(__instance.name + " current fuel: " + currentFuel);
-
             }
         }
     }

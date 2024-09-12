@@ -113,10 +113,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\PlayerExtensions.cs" />
+    <Compile Include="Domain\FuelManager.cs" />
     <Compile Include="Domain\InputManager.cs" />
-    <Compile Include="Patches\FireplacePatch.cs" />
+    <Compile Include="Patches\ContainerPatches.cs" />
+    <Compile Include="Patches\FireplacePatches.cs" />
+    <Compile Include="Patches\SmelterPatches.cs" />
     <Compile Include="Plugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Domain\FuelSource.cs" />
     <Compile Include="Settings\PluginConfig.cs" />
     <Compile Include="Common\ConfigOptions.cs" />
     <Compile Include="Settings\Constants.cs" />

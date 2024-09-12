@@ -14,15 +14,22 @@ namespace JoksterCube.AutoFuelLights.Domain
                 plugin.Config.Save();
 
                 PlayerExtensions.FormatedCenterMessage(Constants.PluginToggleMessage, PluginConfig.IsOn.Value.ToString());
+
+                return;
             }
+
+            if (!PluginConfig.IsOn.IsOn()) return;
+
 
             if (PluginConfig.FuelShortcut.Value.IsKeyDown())
             {
-                PluginConfig.FuelFromInventory.Value = PluginConfig.FuelFromInventory.Value.Not();
+                PluginConfig.InventoryFuel.Value = PluginConfig.InventoryFuel.Value.Not();
 
                 plugin.Config.Save();
 
-                PlayerExtensions.FormatedCenterMessage(Constants.InvenotoryFuelToggleMessage, PluginConfig.FuelFromInventory.Value.ToString());
+                PlayerExtensions.FormatedCenterMessage(Constants.InvenotoryFuelToggleMessage, PluginConfig.InventoryFuel.Value.ToString());
+
+                return;
             }
         }
     }
