@@ -12,7 +12,7 @@ namespace JoksterCube.AutoFuelLights.Patches
             {
                 Plugin.AutoFuelLightsLogger.LogInfo($"{__instance.m_name}");
 
-                //FuelManager.AddContainer(__instance, ___m_nview);
+                //ContainerManager.AddContainer(__instance, ___m_nview);
             }
         }
 
@@ -21,7 +21,7 @@ namespace JoksterCube.AutoFuelLights.Patches
         {
             static void Prefix(Container __instance)
             {
-                //FuelManager.RemoveContainer(__instance);
+                //ContainerManager.RemoveContainer(__instance);
             }
         }
     }

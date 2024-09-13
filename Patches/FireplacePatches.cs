@@ -38,7 +38,7 @@ namespace JoksterCube.AutoFuelLights.Patches
 
                     if (refuelCount <= 0) return;
 
-                    FuelManager.Refuel(zview, refuelCount);
+                    FuelManager.Refuel(zview, fireplace.m_fuelItem, refuelCount);
 
                     //zview.InvokeRPC(nameof(fireplace.RPC_AddFuelAmount), 1f);
                 }
